@@ -2,7 +2,7 @@
 
 int main(){
     char codigo1[10], codigo2[10], cidade1[50], cidade2[50], estado1[10], estado2[10];
-    int pontos_turisticos1, pontos_turisticos2;
+    int pontos_turisticos1, pontos_turisticos2, atributo;
     float area1, area2, pib1, pib2, sup1, sup2;
     float densidade1, densidade2, per1, per2;
 
@@ -91,23 +91,88 @@ int main(){
     printf("• PIB: %.2f\n", pib2);
     printf("• Número de Pontos Turísticos: %d\n", pontos_turisticos2);
     printf("• Densidade Populacional: %.2f hab/km²\n", densidade2);
-    printf("• PIB per Capita: %.2f reais\n", per2);
+    printf("• PIB per Capita: %.2f reais\n\n", per2);
 
-    // Seção responsável por fazer a validação das comparações
-    printf("\nComparação de cartas (Atributo: População):\n\n");
+    // Seção responsável pelo o menu interativo de comparações de atributos
+    printf("---SEÇÃO DE COMPARAÇÃO DE ATRIBUTOS DE CARTAS---\n");
 
-    printf("• Carta 1 - %s (%s): %d\n", cidade1, estado1, populacao1);
-    printf("• Carta 2 - %s (%s): %d\n", cidade2, estado2, populacao2);
+    printf("\n0 - População\n"
+           "1 - Área\n"
+           "2 - PIB\n"
+           "3 - Número de pontos turísticos\n\n");
+    
+    printf("- Qual o atributo você deseja comparar: ");
+    scanf("%d", &atributo);
 
-    if (populacao1 > populacao2){
-        printf("• Resultado: Carta 1, venceu!");
-    } 
-    else if (populacao1 == populacao2) {
-        printf("• Resultado: os valores de população são iguais!");
+    switch (atributo){
+        case 0:
+            if (populacao1 > populacao2){
+                printf("• Carta 1: população -> %d\n", populacao1);
+                printf("• Carta 2: população -> %d\n", populacao2);
+                printf("- A carta 1 venceu!");
+            }
+            else if (populacao1 < populacao2){
+                printf("• Carta 1: população -> %d\n", populacao1);
+                printf("• Carta 2: população -> %d\n", populacao2);
+                printf("- A carta 2 venceu!");
+            }
+            else {
+                printf("• Carta 1: população -> %d\n", populacao1);
+                printf("• Carta 2: população -> %d\n", populacao2);
+                printf("- Os valores das cartas são iguais, deu empate!");
+            }
+            break;
+        case 1:
+            if (area1 > area2) {
+                printf("• Carta 1: área -> %f\n", area1);
+                printf("• Carta 2: área -> %f\n", area2);
+                printf("- A carta 1 venceu!");
+            }
+            else if (area1 < area2) {
+                printf("• Carta 1: área -> %f\n", area1);
+                printf("• Carta 2: área -> %f\n", area2);
+                printf("- A carta 2 venceu!");
+            }
+            else {
+                printf("• Carta 1: área -> %.2f\n", area1);
+                printf("• Carta 2: área -> %.2f\n", area2);
+                printf("- Os valores das cartas são iguais, deu empate!");
+            }
+            break;
+        case 2:
+            if (pib1 > pib2) {
+                printf("• Carta 1: pib -> %.2f\n", pib1);
+                printf("• Carta 2: pib -> %.2f\n", pib2);
+                printf("- A carta 1 venceu!");
+            }
+            else if (pib1 < pib2){
+                printf("• Carta 1: pib -> %.2f\n", pib1);
+                printf("• Carta 2: pib -> %.2f\n", pib2);
+                printf("- Carta 2 venceu!");
+            }
+            else {
+                printf("• Carta 1: pib -> %.2f\n", pib1);
+                printf("• Carta 2: pib -> %.2f\n", pib2);
+                printf("- Os valores das cartas são iguais, deu empate!");                
+            }
+            break;
+        case 3:
+            if (pontos_turisticos1 > pontos_turisticos2){
+                printf("• Carta 1: ponto turístico -> %d\n", pontos_turisticos1);
+                printf("• Carta 2: ponto turístico -> %d\n", pontos_turisticos2);
+                printf("- A carta 1 venceu!");
+            }
+            else if (pontos_turisticos1 < pontos_turisticos2){
+                printf("• Carta 1: ponto turístico -> %d\n", pontos_turisticos1);
+                printf("• Carta 2: ponto turístico -> %d\n", pontos_turisticos2);
+                printf("- A carta 2 venceu!");           
+            }
+            else {
+                printf("• Carta 1: ponto turístico -> %d\n", pontos_turisticos1);
+                printf("• Carta 2: ponto turístico -> %d\n", pontos_turisticos2);
+                printf("- Os valores das cartas são iguais, deu empate!");                
+            }
+            break;
     }
-    else {
-        printf("• Resultado: Carta 2, venceu!");
-    }
-
     return 0;
 }
