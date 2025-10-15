@@ -2,7 +2,8 @@
 
 int main(){
     char codigo1[10], codigo2[10], cidade1[50], cidade2[50], estado1[10], estado2[10];
-    int pontos_turisticos1, pontos_turisticos2, atributo;
+    int jog1_atr1, jog1_atr2, jog2_atr1, jog2_atr2;
+    int pontos_turisticos1, pontos_turisticos2;
     float area1, area2, pib1, pib2, sup1, sup2;
     float densidade1, densidade2, per1, per2;
 
@@ -93,86 +94,123 @@ int main(){
     printf("• Densidade Populacional: %.2f hab/km²\n", densidade2);
     printf("• PIB per Capita: %.2f reais\n\n", per2);
 
-    // Seção responsável pelo o menu interativo de comparações de atributos
-    printf("---SEÇÃO DE COMPARAÇÃO DE ATRIBUTOS DE CARTAS---\n");
+    // Seção responsável por comparação dos valores
+    printf("Seção de Comparação de Cartas\n\n");
 
-    printf("\n0 - População\n"
-           "1 - Área\n"
-           "2 - PIB\n"
-           "3 - Número de pontos turísticos\n\n");
-    
-    printf("- Qual o atributo você deseja comparar: ");
-    scanf("%d", &atributo);
+    printf("1 - População\n"
+           "2 - Área\n"
+           "3 - PIB\n"
+           "4 - Número de pontos turísticos\n");
 
-    switch (atributo){
-        case 0:
-            if (populacao1 > populacao2){
-                printf("• Carta 1: população -> %d\n", populacao1);
-                printf("• Carta 2: população -> %d\n", populacao2);
-                printf("- A carta 1 venceu!");
-            }
-            else if (populacao1 < populacao2){
-                printf("• Carta 1: população -> %d\n", populacao1);
-                printf("• Carta 2: população -> %d\n", populacao2);
-                printf("- A carta 2 venceu!");
-            }
-            else {
-                printf("• Carta 1: população -> %d\n", populacao1);
-                printf("• Carta 2: população -> %d\n", populacao2);
-                printf("- Os valores das cartas são iguais, deu empate!");
-            }
-            break;
-        case 1:
-            if (area1 > area2) {
-                printf("• Carta 1: área -> %f\n", area1);
-                printf("• Carta 2: área -> %f\n", area2);
-                printf("- A carta 1 venceu!");
-            }
-            else if (area1 < area2) {
-                printf("• Carta 1: área -> %f\n", area1);
-                printf("• Carta 2: área -> %f\n", area2);
-                printf("- A carta 2 venceu!");
-            }
-            else {
-                printf("• Carta 1: área -> %.2f\n", area1);
-                printf("• Carta 2: área -> %.2f\n", area2);
-                printf("- Os valores das cartas são iguais, deu empate!");
-            }
-            break;
-        case 2:
-            if (pib1 > pib2) {
-                printf("• Carta 1: pib -> %.2f\n", pib1);
-                printf("• Carta 2: pib -> %.2f\n", pib2);
-                printf("- A carta 1 venceu!");
-            }
-            else if (pib1 < pib2){
-                printf("• Carta 1: pib -> %.2f\n", pib1);
-                printf("• Carta 2: pib -> %.2f\n", pib2);
-                printf("- Carta 2 venceu!");
-            }
-            else {
-                printf("• Carta 1: pib -> %.2f\n", pib1);
-                printf("• Carta 2: pib -> %.2f\n", pib2);
-                printf("- Os valores das cartas são iguais, deu empate!");                
-            }
-            break;
-        case 3:
-            if (pontos_turisticos1 > pontos_turisticos2){
-                printf("• Carta 1: ponto turístico -> %d\n", pontos_turisticos1);
-                printf("• Carta 2: ponto turístico -> %d\n", pontos_turisticos2);
-                printf("- A carta 1 venceu!");
-            }
-            else if (pontos_turisticos1 < pontos_turisticos2){
-                printf("• Carta 1: ponto turístico -> %d\n", pontos_turisticos1);
-                printf("• Carta 2: ponto turístico -> %d\n", pontos_turisticos2);
-                printf("- A carta 2 venceu!");           
-            }
-            else {
-                printf("• Carta 1: ponto turístico -> %d\n", pontos_turisticos1);
-                printf("• Carta 2: ponto turístico -> %d\n", pontos_turisticos2);
-                printf("- Os valores das cartas são iguais, deu empate!");                
-            }
-            break;
+    printf("\n- Faça a primeira a escolha do primeiro atributo que deseja comparar (jogador 1): ");
+    scanf("%d", &jog1_atr1);
+
+    printf("- Faça a primeira a escolha do primeiro atributo que deseja comparar (jogador 2): ");
+    scanf("%d", &jog2_atr1);
+
+    if (jog1_atr1 == jog2_atr1){
+        printf("• Aconteceu de que os atributos são iguais, então é empate!");
+    } else {
+        switch (jog1_atr1){
+            case 1:
+                printf("\n• O jogador 1 no seu primeiro atributo escolheu: população\n");
+                jog1_atr1 = populacao1 > populacao2 ? 1 : 0;
+                break;
+            case 2:
+                printf("\n• O jogador 1 no seu primeiro atributo escolheu: área\n");
+                jog1_atr1 = area1 > area2 ? 1 : 0;
+                break;
+            case 3:
+                printf("\n• O jogador 1 no seu primeiro atributo escolheu: PIB\n");
+                jog1_atr1 = pib1 > pib2 ? 1 : 0;
+                break;
+            case 4:
+                printf("\n• O jogador 1 no seu primeiro atributo escolheu: pontos turísticos\n");
+                jog1_atr1 = pontos_turisticos1 > pontos_turisticos2 ? 1 : 0;
+                break;
+        }
+        switch (jog2_atr1) {
+            case 1:
+                printf("• O jogador 2 no seu primeiro atributo escolheu: população\n");
+                jog1_atr1 = populacao2 > populacao1 ? 1 : 0;
+                break;
+            case 2:
+                printf("• O jogador 2 no seu primeiro atributo escolheu: área\n");
+                jog1_atr1 = area2 > area1 ? 1 : 0;
+                break;
+            case 3:
+                printf("• O jogador 2 no seu primeiro atributo escolheu: PIB\n");
+                jog1_atr1 = pib2 > pib1 ? 1 : 0;
+                break;
+            case 4:
+                printf("• O jogador 2 no seu primeiro atributo escolheu: pontos turísticos\n");
+                jog1_atr1 = pontos_turisticos2 > pontos_turisticos1 ? 1 : 0;
+                break;        
+        }
     }
+
+    if (jog1_atr1 > jog2_atr1){
+        printf("\n• O jogador 1 ganhou na comparação do primeiro atributo\n");
+    } else if (jog1_atr1 < jog2_atr1){
+        printf("\n• O jogador 2 venceu na comparação do primeiro atributo\n");
+    } else {
+        printf("\n• Empate nos valores do primeiro atributo!\n");
+    }
+
+    printf("\n- Faça a segunda escolha do segundo atributo que deseja comparar (jogador 1): ");
+    scanf("%d", &jog1_atr2);
+
+    printf("- Faça a segunda escolha do segundo atributo que deseja comparar (jogador 2): ");
+    scanf("%d", &jog2_atr2);
+
+    if (jog1_atr2 == jog2_atr2){
+        printf("• Aconteceu de que os atributos são iguais, então é empate!");
+    } else {
+        switch (jog1_atr2){
+            case 1:
+                printf("\n• O jogador 1 no seu segundo atributo escolheu: população\n");
+                jog1_atr2 = populacao1 > populacao2 ? 1 : 0;
+                break;
+            case 2:
+                printf("\n• O jogador 1 no seu segundo atributo escolheu: área\n");
+                jog1_atr2 = area1 > area2 ? 1 : 0;
+                break;
+            case 3:
+                printf("\n• O jogador 1 no seu segundo atributo escolheu: PIB\n");
+                jog1_atr2 = pib1 > pib2 ? 1 : 0;
+                break;
+            case 4:
+                printf("\n• O jogador 1 no seu segundo atributo escolheu: pontos turísticos\n");
+                jog1_atr2 = pontos_turisticos1 > pontos_turisticos2 ? 1 : 0;
+                break;
+        }
+        switch (jog2_atr2) {
+            case 1:
+                printf("• O jogador 2 no seu segundo atributo escolheu: população\n");
+                jog1_atr2 = populacao2 > populacao1 ? 1 : 0;
+                break;
+            case 2:
+                printf("• O jogador 2 no seu segundo atributo escolheu: área\n");
+                jog1_atr2 = area2 > area1 ? 1 : 0;
+                break;
+            case 3:
+                printf("• O jogador 2 no seu segundo atributo escolheu: PIB\n");
+                jog1_atr2 = pib2 > pib1 ? 1 : 0;
+                break;
+            case 4:
+                printf("• O jogador 2 no seu segundo atributo escolheu: pontos turísticos\n");
+                jog1_atr2 = pontos_turisticos2 > pontos_turisticos1 ? 1 : 0;
+                break;        
+        }
+    }
+
+    if (jog1_atr2 > jog2_atr2){
+        printf("\n• O jogador 1 ganhou na comparação do segundo atributo\n");
+    } else if (jog1_atr2 < jog2_atr2){
+        printf("\n• O jogador 2 venceu na comparação do segundo atributo\n");
+    } else {
+        printf("\n• Empate nos valores do segundo atributo!\n");
+    }
+
     return 0;
 }
